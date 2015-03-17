@@ -3,10 +3,10 @@ from PIL import Image
 import os
 import sys
 
-if not os.path.exists(sys.argv[1]):
-	os.makedirs(sys.argv[1])
+if not os.path.exists('stickers/' + sys.argv[1]):
+	os.makedirs('stickers/' + sys.argv[1])
 
-img = Image.open(sys.argv[1] + '.png')
+img = Image.open('images/' + sys.argv[1] + '.png')
 
 x_parts = int(input('Enter number of columns'))
 y_parts = int(input('Enter number of rows'))
@@ -23,7 +23,7 @@ for x in range(0,5):
 		print(left,top,current_right,current_bottom)
 		box = (left,top,current_right,current_bottom)
 		new_img = img.crop(box)
-		new_img.save('../stickers' + sys.argv[1] + '/' + str(x) + ' ' + str(y) + '.png')
+		new_img.save('stickers/' + sys.argv[1] + '/' + str(x) + ' ' + str(y) + '.png')
 		new_img.load()
 		left = current_right
 		current_right += right
